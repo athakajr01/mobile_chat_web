@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark, cupcake, bumblebee, emerald, corporate, synthwave, retro, cyberpunk, valentine, halloween, garden, forest, aqua, lofi, pastel, fantasy, wireframe, black, luxury, dracula, cmyk, autumn, business, acid, lemonade, night, coffee, winter;
+}
+
+:root {
+  --wa-bg: #e5ddd5;
+  --wa-sender: #dcf8c6;
+  --wa-receiver: #ffffff;
+  --wa-header: #f0f2f5;
+  --wa-sidebar-bg: #ffffff;
+  --wa-primary: #00a884;
+}
+
+[data-theme="dark"] {
+  --wa-bg: #0b141a;
+  --wa-sender: #005c4b;
+  --wa-receiver: #202c33;
+  --wa-header: #202c33;
+  --wa-sidebar-bg: #111b21;
+}
+
+.whatsapp-container {
+  background-color: var(--wa-bg);
+  background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+  background-repeat: repeat;
+  background-blend-mode: overlay;
+}
+
+.chat-bubble-wa-sender {
+  background-color: var(--wa-sender) !important;
+  color: #303030 !important;
+}
+
+[data-theme="dark"] .chat-bubble-wa-sender {
+  color: #e9edef !important;
+}
+
+.chat-bubble-wa-receiver {
+  background-color: var(--wa-receiver) !important;
+  color: #303030 !important;
+}
+
+[data-theme="dark"] .chat-bubble-wa-receiver {
+  color: #e9edef !important;
+}

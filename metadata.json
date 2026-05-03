@@ -1,0 +1,5 @@
+{
+  "name": "Full-Stack Chat App",
+  "description": "A real-time chat application with authentication, image uploads, and theme support.",
+  "requestFramePermissions": ["camera", "microphone"]
+}

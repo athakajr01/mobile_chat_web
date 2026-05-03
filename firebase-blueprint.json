@@ -1,0 +1,97 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "fullName": { "type": "string" },
+        "profilePic": { "type": "string" },
+        "isOnline": { "type": "boolean" },
+        "typingTo": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "fullName"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Chat message between users or in a group",
+      "type": "object",
+      "properties": {
+        "senderId": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "groupId": { "type": "string" },
+        "isRead": { "type": "boolean" },
+        "reactions": { "type": "object" },
+        "text": { "type": "string" },
+        "image": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["senderId"]
+    },
+    "Group": {
+      "title": "Group",
+      "description": "Group chat information",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "members": { "type": "array", "items": { "type": "string" } },
+        "createdBy": { "type": "string" },
+        "groupPic": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "members", "createdBy"]
+    },
+    "Call": {
+      "title": "Call",
+      "description": "Video or audio call signaling",
+      "type": "object",
+      "properties": {
+        "callerId": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "status": { "type": "string", "enum": ["ringing", "accepted", "declined", "ended"] },
+        "type": { "type": "string", "enum": ["audio", "video"] },
+        "callerPeerId": { "type": "string" },
+        "receiverPeerId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["callerId", "receiverId", "status", "type", "callerPeerId"]
+    },
+    "Status": {
+      "title": "Status",
+      "description": "User status update (Story)",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "mediaUrl": { "type": "string" },
+        "text": { "type": "string" },
+        "bg": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Chat messages (private or group)"
+    },
+    "/groups/{groupId}": {
+      "schema": "Group",
+      "description": "Group definitions"
+    },
+    "/calls/{callId}": {
+      "schema": "Call",
+      "description": "Call signaling data"
+    },
+    "/statuses/{statusId}": {
+      "schema": "Status",
+      "description": "User status updates"
+    }
+  }
+}
